@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarLink - Find a Tutor</title>
+    <link rel="stylesheet" href="homeStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="findTutor.html" class="active">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html">Become a Tutor</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="profile.html"><i class="fas fa-user"></i></a>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="find-tutor-section">
+            <div class="search-header">
+                <h2>Find Your Perfect Tutor</h2>
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        placeholder="Search for tutors by subject..." 
+                        class="search-bar"
+                        autocomplete="off"
+                    >
+                    <button class="cta-button">Search</button>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <h3>Browse by Subject</h3>
+                <div class="subject-filters">
+                    <!-- Subject filters will be added dynamically -->
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h3>Available Tutors</h3>
+                <div class="tutor-cards">
+                    <!-- Tutor cards will be added dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

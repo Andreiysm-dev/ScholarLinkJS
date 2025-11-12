@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarLink - Search Results</title>
+    <link rel="stylesheet" href="homeStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homePage.html" class="active">Home</a></li>
+                <li><a href="#popularSubjects" class="find-tutor-link">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html">Become a Tutor</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="profile.html"><i class="fas fa-user"></i></a>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+
+    <section class="search-results">
+        <div class="search-header">
+            <h2>Search Results</h2>
+            <p id="searchInfo">Showing results for: <span id="searchQuery"></span></p>
+        </div>
+        <div class="tutor-cards" id="searchResults">
+            <!-- Results will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

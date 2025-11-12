@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarLink</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="logo">
+            <h1>ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" data-target="homePage.html">Home</a></li>
+                <li><a href="#" class="nav-link" data-target="findTutor.html">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html" class="nav-link">Become a Tutor</a></li>
+                <li><a href="#" class="nav-link" data-target="aboutUs.html">About Us</a></li>
+                <li><a href="#" class="nav-link" data-target="contactUs.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="#" id="loginBtn">Login</a>
+            <a href="#" id="signupBtn">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Tutoring by Students, for Students</h2>
+        <input 
+            type="text" 
+            placeholder="Search for tutors by subject..." 
+            class="search-bar"
+            autocomplete="off"
+        >
+        <button class="cta-button">Find Tutors</button>
+    </section>
+
+    <!-- Featured Tutors -->
+    <section class="featured-tutors">
+        <h3>Featured Tutors</h3>
+        <div class="tutor-cards">
+            <div class="tutor-card">
+                <img src="https://via.placeholder.com/150" alt="Tutor 1">
+                <h4>Jane Doe</h4>
+                <p>Math and Science Tutor</p>
+                <p>Rating: ★★★★☆</p>
+                <button>Book a Session</button>
+            </div>
+            <div class="tutor-card">
+                <img src="https://via.placeholder.com/150" alt="Tutor 2">
+                <h4>John Smith</h4>
+                <p>English and Literature Tutor</p>
+                <p>Rating: ★★★★☆</p>
+                <button>Book a Session</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
+    </footer>
+    <!-- ... existing code ... -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="loginEmail" required>
+                    <label for="loginEmail">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" required>
+                    <label for="loginPassword">Password</label>
+                </div>
+                <button type="submit" class="submit-button">Login</button>
+                <p class="form-footer">
+                    Don't have an account? <a href="#" id="switchToSignup">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <input type="text" id="fullName" required>
+                    <label for="fullName">Full Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" required>
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <button type="submit" class="submit-button">Sign Up</button>
+                <p class="form-footer">
+                    Already have an account? <a href="#" id="switchToLogin">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            displayFeaturedTutors();
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    if (!currentUser) {
+                        alert('Please sign up first to access this feature.');
+                    } else {
+                        window.location.href = link.getAttribute('data-target');
+                    }
+                });
+            });
+        });
+
+        const displayFeaturedTutors = () => {
+            const tutorsContainer = document.querySelector('.tutor-cards');
+            if (!tutorsContainer) {
+                console.log('Tutors container not found');
+                return;
+            }
+
+            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
+            tutorsContainer.innerHTML = '';
+
+            if (tutors.length === 0) {
+                const noTutors = document.createElement('div');
+                noTutors.className = 'no-tutors';
+                noTutors.innerHTML = 'No featured tutors available yet.';
+                tutorsContainer.appendChild(noTutors);
+                return;
+            }
+
+            tutors.forEach(tutor => {
+                const card = document.createElement('div');
+                card.className = 'tutor-card';
+
+                const img = document.createElement('img');
+                img.src = tutor.profilePhoto || 'https://via.placeholder.com/150';
+                img.alt = tutor.fullName;
+
+                const name = document.createElement('h4');
+                name.textContent = tutor.fullName;
+
+                const subject = document.createElement('p');
+                subject.textContent = `Subjects: ${tutor.subjects.join(', ')}`;
+
+                const rating = document.createElement('p');
+                rating.textContent = `Rating: ★★★★☆`; // Placeholder for rating
+
+                const button = document.createElement('button');
+                button.textContent = 'Book a Session';
+                button.onclick = () => {
+                    // Logic to book a session can be added here
+                };
+
+                card.appendChild(img);
+                card.appendChild(name);
+                card.appendChild(subject);
+                card.appendChild(rating);
+                card.appendChild(button);
+
+                tutorsContainer.appendChild(card);
+            });
+        };
+    </script>
+</body>
+</html>

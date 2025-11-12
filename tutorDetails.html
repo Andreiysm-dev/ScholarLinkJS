@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tutorDetails.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --secondary-hover: #2563eb;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f3f4f6;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homePage.html" class="active">Home</a></li>
+                <li><a href="#popularSubjects" class="find-tutor-link">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html">Become a Tutor</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="home">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="#"><i class="fas fa-user"></i></a>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="tutor-details-section">
+            <div class="container">
+                <div class="tutor-profile">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 

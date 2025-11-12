@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarLink - Become a Tutor</title>
+    <link rel="stylesheet" href="tutorStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="findTutor.html" class="active">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html">Become a Tutor</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="profile.html"><i class="fas fa-user"></i></a>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+
+    <section class="tutor-application">
+        <div class="container">
+            <h2>Become a Tutor</h2>
+            <form id="tutorApplicationForm" class="tutor-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <input type="file" id="profilePhoto" accept="image/*" required>
+                        <label for="profilePhoto">Profile Photo</label>
+                        <img id="profilePhotoPreview" src="" alt="Profile Photo Preview" style="display: none; max-width: 150px; margin-top: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tutorFullName" required>
+                        <label for="tutorFullName">Full Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tutorBio" required>
+                        <label for="tutorBio">Brief Bio</label>
+                    </div>
+                </div>
+
+                <!-- Educational Background -->
+                <div class="form-section">
+                    <h3>Educational Background</h3>
+                    <div class="form-group">
+                        <input type="text" id="university" required>
+                        <label for="university">University/College</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="degree" required>
+                        <label for="degree">Degree Program</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="yearLevel" min="1" max="5" required>
+                        <label for="yearLevel">Current Year Level</label>
+                    </div>
+                </div>
+
+                <!-- Teaching Subjects -->
+                <div class="form-section">
+                    <h3>Teaching Subjects</h3>
+                    <div class="form-group">
+                        <select id="subjects" multiple required>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="English">English</option>
+                            <option value="History">History</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Filipino">Filipino</option>
+                        </select>
+                        <label for="subjects">Select Subjects (Hold Ctrl/Cmd to select multiple)</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('tutorApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get the current logged-in user
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser || !currentUser.email) {
+                alert('Please log in first');
+                window.location.href = 'landingPage.html';
+                return;
+            }
+
+            const fullName = document.getElementById('tutorFullName').value;
+            const bio = document.getElementById('tutorBio').value;
+            const university = document.getElementById('university').value;
+            const degree = document.getElementById('degree').value;
+            const yearLevel = document.getElementById('yearLevel').value;
+            const subjects = Array.from(document.getElementById('subjects').selectedOptions).map(option => option.value);
+            const profilePhotoPreview = document.getElementById('profilePhotoPreview');
+
+            // Create a new tutor object using the preview image source
+            const newTutor = {
+                fullName,
+                email: currentUser.email,
+                bio,
+                university,
+                degree,
+                yearLevel,
+                subjects,
+                profilePhoto: profilePhotoPreview.src || 'https://via.placeholder.com/150'
+            };
+
+            console.log('Creating new tutor:', newTutor);
+
+            // Save the tutor to local storage
+            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
+            tutors.push(newTutor);
+            localStorage.setItem('tutors', JSON.stringify(tutors));
+
+            // Update user photo and status using the shared function
+            updateUserPhoto(profilePhotoPreview.src);
+            
+            // Update isTutor status
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const userIndex = users.findIndex(user => user.email === currentUser.email);
+            if (userIndex !== -1) {
+                users[userIndex].isTutor = true;
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                currentUser.isTutor = true;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+
+            alert('Application submitted successfully!');
+            window.location.href = 'homePage.html';
+        });
+
+        // Initialize photo handling
+        const profilePhotoInput = document.getElementById('profilePhoto');
+        const profilePhotoPreview = document.getElementById('profilePhotoPreview');
+        handlePhotoUpload(profilePhotoInput, profilePhotoPreview);
+    </script>
+</body>
+</html> 

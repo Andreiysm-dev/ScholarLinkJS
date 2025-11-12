@@ -1,0 +1,265 @@
+:root {
+    /* Modern, sophisticated color palette */
+    --primary: #0f172a;        /* Deep navy */
+    --primary-dark: #1e293b;   /* Darker navy */
+    --secondary: #3b82f6;      /* Bright blue */
+    --secondary-hover: #2563eb;/* Deeper blue */
+    --accent: #ec4899;         /* Pink accent */
+    --bg-light: #f1f5f9;       /* Soft background */
+    --text-dark: #0f172a;      /* Clear, dark text */
+    --text-light: #475569;     /* Balanced gray */
+    --white: #ffffff;
+    --shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+    --shadow-lg: 0 8px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 60px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    padding: 12px 32px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+header .logo h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+header nav ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    background-color: var(--bg-light);
+}
+
+/* Account Section */
+.account {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account a, 
+.settings-btn,
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    padding: 8px;
+    font-size: 1.25rem;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.account a:hover, 
+.settings-btn:hover,
+.logout-btn:hover {
+    background-color: var(--bg-light);
+    transform: translateY(-1px);
+}
+
+.account i,
+.settings-btn i,
+.logout-btn i {
+    line-height: 1;
+    display: block;
+}
+
+/* Tutor Application Styles */
+.tutor-application {
+    padding: 40px 20px;
+    background-color: var(--bg-light);
+    min-height: calc(100vh - 60px); /* Full height minus header */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.tutor-application h2 {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.form-section {
+    margin-bottom: 35px;
+}
+
+.form-section h3 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Form Elements */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--bg-light);
+    border-radius: 8px;
+    outline: none;
+    background: var(--white);
+    transition: all 0.2s;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.form-group label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: var(--white);
+    padding: 0 5px;
+    font-size: 14px;
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* File Input Styling */
+.form-group input[type="file"] {
+    padding: 12px;
+    border: 2px dashed var(--bg-light);
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Select Multiple Styling */
+.form-group select[multiple] {
+    height: 120px;
+    padding: 8px;
+}
+
+.form-group select[multiple] option {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.form-group select[multiple] option:checked {
+    background: var(--secondary) linear-gradient(0deg, var(--secondary) 0%, var(--secondary) 100%);
+    color: var(--white);
+}
+
+/* Submit Button */
+.submit-button {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: all 0.2s;
+    margin-top: 30px;
+}
+
+.submit-button:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary);
+    padding: 15px;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .tutor-application {
+        padding: 20px 10px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px;
+    }
+    
+    .submit-button {
+        padding: 14px;
+    }
+} 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminStyles.css">
+</head>
+<body>
+    <h2>Registered Tutors</h2>
+    <div id="tutorsList"></div>
+
+    <h2>Registered Accounts</h2>
+    <div id="accountsList"></div>
+
+    <script>
+        const tutorsList = document.getElementById('tutorsList');
+        const accountsList = document.getElementById('accountsList');
+
+        // Check if the user is an admin
+        if (localStorage.getItem('isAdmin') !== 'true') {
+            alert('Access denied!');
+            window.location.href = 'adminLogin.html'; // Redirect to login
+        }
+
+        const displayTutors = () => {
+            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
+            tutorsList.innerHTML = '';
+
+            tutors.forEach((tutor, index) => {
+                const tutorDiv = document.createElement('div');
+                tutorDiv.innerHTML = `
+                    <p>${tutor.fullName} - ${tutor.email} <button onclick="deleteTutor(${index})">Delete</button></p>
+                `;
+                tutorsList.appendChild(tutorDiv);
+            });
+        };
+
+        const deleteTutor = (index) => {
+            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
+            tutors.splice(index, 1); // Remove the tutor from the array
+            localStorage.setItem('tutors', JSON.stringify(tutors)); // Update local storage
+            displayTutors(); // Refresh the list
+        };
+
+        const displayAccounts = () => {
+            const accounts = JSON.parse(localStorage.getItem('users') || '[]'); // Assuming users are stored in 'users'
+            accountsList.innerHTML = '';
+
+            accounts.forEach((account, index) => {
+                const accountDiv = document.createElement('div');
+                accountDiv.innerHTML = `
+                    <p>${account.fullName} - ${account.email} - Password: ${account.password} <button onclick="deleteAccount(${index})">Delete</button></p>
+                `;
+                accountsList.appendChild(accountDiv);
+            });
+        };
+
+        const deleteAccount = (index) => {
+            const accounts = JSON.parse(localStorage.getItem('users') || '[]');
+            accounts.splice(index, 1); // Remove the account from the array
+            localStorage.setItem('users', JSON.stringify(accounts)); // Update local storage
+            displayAccounts(); // Refresh the list
+        };
+
+        // Initial display of tutors and accounts
+        displayTutors();
+        displayAccounts();
+    </script>
+</body>
+</html> 

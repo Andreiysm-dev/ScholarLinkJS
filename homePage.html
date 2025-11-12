@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarLink - Home</title>
+    <link rel="stylesheet" href="homeStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 id="menuToggle">ScholarLink</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homePage.html" class="active">Home</a></li>
+                <li><a href="findTutor.html" class="find-tutor-link">Find a Tutor</a></li>
+                <li><a href="becomeTutor.html">Become a Tutor</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <a href="profile.html"><i class="fas fa-user"></i></a>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <div class="side-menu">
+        <nav class="side-nav">
+            <div class="menu-section">
+                <h3>Dashboard</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i>Overview</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i>My Schedule</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i>Session History</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-section">
+                <h3>Learning</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-book"></i>My Subjects</a></li>
+                    <li><a href="#"><i class="fas fa-star"></i>Favorite Tutors</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i>Learning Progress</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-file-alt"></i>Study Materials</a></li>
+                    <li><a href="#"><i class="fas fa-video"></i>Recorded Sessions</a></li>
+                    <li><a href="#"><i class="fas fa-tasks"></i>Assignments</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome! [username]</h2>
+            <p class="subtitle">Ready to continue your learning journey?</p>
+            <div class="search-container">
+                <form action="search.html" method="GET">
+                    <input 
+                        type="text" 
+                        name="query"
+                        placeholder="Search for tutors by name..." 
+                        class="search-bar"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" class="cta-button">Search Tutors</button>
+                </form>
+            </div>
+            <div class="quick-links">
+                <a href="#" class="quick-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>My Sessions</span>
+                </a>
+                <a href="#" class="quick-link">
+                    <i class="fas fa-star"></i>
+                    <span>Favorite Tutors</span>
+                </a>
+                <a href="#" class="quick-link">
+                    <i class="fas fa-history"></i>
+                    <span>Recent Subjects</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="featured-tutors">
+        <h3>Recommended Tutors</h3>
+        <div class="tutor-cards" id="recommendedTutors">
+        </div>
+    </section>
+
+    <section class="featured-tutors" id="popularSubjects">
+        <h3>Popular Subjects</h3>
+        <div class="subject-cards">
+        </div>
+    </section>
+
+
+    <section class="hero" style="background: var(--bg-light); color: var(--text-dark);">
+        <h2>How ScholarLink Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Find Your Tutor</h3>
+                <p>Browse through our qualified tutors</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Schedule a Session</h3>
+                <p>Book a time that works for you</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Start Learning</h3>
+                <p>Connect and begin learning</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="featured-tutors">
+        <h3>What Our Students Say</h3>
+        <div class="tutor-cards">
+            <div class="tutor-card">
+                <img src="https://via.placeholder.com/150" alt="Student">
+                <h4>Dwayne the Rock</h4>
+                <p>"Ang lopit!"</p>
+                <p>Mathematics Student</p>
+            </div>
+            <div class="tutor-card">
+                <img src="https://via.placeholder.com/150" alt="Student">
+                <h4>Bots Barraba</h4>
+                <p>"Amazing! I am honoured."</p>
+                <p>Science Student</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

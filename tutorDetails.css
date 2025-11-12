@@ -1,0 +1,129 @@
+/* Tutor Details Page Specific Styles - Additional to styles.css */
+.account {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.account a {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#loginBtn {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--secondary);
+}
+
+#loginBtn:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+#signupBtn {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+}
+
+#signupBtn:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+}
+
+#logoutBtn {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--secondary);
+}
+
+#logoutBtn:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.tutor-details-section {
+    padding: 120px 0 60px;
+    background-color: var(--bg-light);
+    min-height: calc(100vh - 80px);
+}
+
+.tutor-profile {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.tutor-header {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.tutor-header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+}
+
+.tutor-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--white);
+}
+
+.tutor-info {
+    padding: 40px;
+}
+
+.tutor-info p {
+    margin: 20px 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+}
+
+.tutor-info p strong {
+    color: var(--primary);
+    font-weight: 600;
+    min-width: 120px;
+    margin-right: 16px;
+}
+
+@media (max-width: 768px) {
+    .tutor-header {
+        padding: 30px 20px;
+    }
+
+    .tutor-header img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .tutor-header h1 {
+        font-size: 2rem;
+    }
+
+    .tutor-info p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tutor-info p strong {
+        margin-bottom: 4px;
+    }
+} 
