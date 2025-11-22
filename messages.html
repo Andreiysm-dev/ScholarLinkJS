@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages - TutorMatch</title>
+    <title>Messages - ScholarLink</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="messages.css">
@@ -15,38 +15,67 @@
         </div>
         <nav>
             <ul>
-                <li><a href="homePage.html" class="active">Home</a></li>
-                <li><a href="#popularSubjects" class="find-tutor-link">Find a Tutor</a></li>
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="findTutor.html">Find a Tutor</a></li>
                 <li><a href="becomeTutor.html">Become a Tutor</a></li>
-                <li><a href="messages.html">Messages</a></li>
-                <li><a href="home">Contact Us</a></li>
+                <li><a href="messages.html" class="active">Messages</a></li>
+                <li><a href="profile.html">Profile</a></li>
             </ul>
         </nav>
         <div class="account">
-            <a href="#"><i class="fas fa-user"></i></a>
-            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+            <a href="profile.html"><i class="fas fa-user"></i></a>
             <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
         </div>
     </header>
 
     <main>
         <section class="messages-section">
-            <div class="container">
-                <h2>Messages</h2>
-                <div class="messages-container">
-                    <div class="message-list">
+            <div class="messages-container">
+                <!-- Conversations List -->
+                <div class="conversations-panel">
+                    <div class="conversations-header">
+                        <h2>Conversations</h2>
+                        <button id="newMessageBtn" class="new-message-btn" title="New Message">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div id="conversationsList" class="conversations-list">
+                        <!-- Conversations will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Chat Panel -->
+                <div class="chat-panel" id="chatPanel">
+                    <div class="chat-placeholder">
+                        <i class="fas fa-comments"></i>
+                        <p>Select a conversation to start messaging</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
-    </footer>
+    <!-- New Message Modal -->
+    <div id="newMessageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Message</h3>
+                <button class="close-modal" id="closeNewMessageModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label for="recipientSelect">Select Recipient:</label>
+                <select id="recipientSelect" class="form-input">
+                    <option value="">Choose a user...</option>
+                </select>
+                <button id="startConversationBtn" class="btn-primary" disabled>Start Conversation</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Supabase Integration -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="script-supabase.js"></script>
+    <script src="messages.js"></script>
 </body>
 </html>

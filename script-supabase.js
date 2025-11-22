@@ -211,22 +211,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 const password = document.getElementById('loginPassword').value;
                 
                 try {
-                    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-                    if (error) {
-                        throw error;
+                    // Get user from database
+                    const profileResult = await dbService.getUserByEmail(email);
+                    
+                    if (!profileResult.success || !profileResult.data) {
+                        alert('Invalid credentials. Please check your email and password.');
+                        return;
                     }
 
-                    const profileResult = await dbService.getUserByEmail(email);
-                    if (profileResult.success && profileResult.data) {
-                        SessionManager.setCurrentUser(profileResult.data);
-                        alert('Login successful!');
-                        window.location.href = 'homePage.html';
-                    } else {
-                        alert('Login succeeded but profile is missing. Please re-register.');
+                    const user = profileResult.data;
+                    
+                    // Verify password (stored in plain text in database)
+                    if (user.password !== password) {
+                        alert('Invalid credentials. Please check your email and password.');
+                        return;
                     }
+
+                    // Login successful - set session
+                    SessionManager.setCurrentUser(user);
+                    alert('Login successful!');
+                    window.location.href = 'homePage.html';
                 } catch (error) {
                     console.error('Login error:', error);
-                    alert('Invalid credentials or Supabase auth error. Please try again.');
+                    alert('Login failed. Please try again.');
                 }
             });
         }
@@ -304,17 +311,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 try {
-                    // Sign up via Supabase Auth
-                    const { error: authError } = await supabase.auth.signUp({
-                        email,
-                        password,
-                        options: {
-                            data: { full_name: fullName }
-                        }
-                    });
-
-                    if (authError) {
-                        throw authError;
+                    // Check if user already exists
+                    const existingUser = await dbService.getUserByEmail(email);
+                    if (existingUser.success && existingUser.data) {
+                        alert('Email already registered!');
+                        return;
                     }
 
                     const newUser = { 
@@ -330,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         alert('Registration successful!');
                         window.location.href = 'homePage.html';
                     } else {
-                        alert('Registration succeeded but profile creation failed: ' + result.error);
+                        alert('Registration failed: ' + result.error);
                     }
                 } catch (error) {
                     console.error('Signup error:', error);
