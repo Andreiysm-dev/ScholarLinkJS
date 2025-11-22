@@ -113,74 +113,9 @@
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            displayFeaturedTutors();
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default link behavior
-                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                    if (!currentUser) {
-                        alert('Please sign up first to access this feature.');
-                    } else {
-                        window.location.href = link.getAttribute('data-target');
-                    }
-                });
-            });
-        });
-
-        const displayFeaturedTutors = () => {
-            const tutorsContainer = document.querySelector('.tutor-cards');
-            if (!tutorsContainer) {
-                console.log('Tutors container not found');
-                return;
-            }
-
-            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
-            tutorsContainer.innerHTML = '';
-
-            if (tutors.length === 0) {
-                const noTutors = document.createElement('div');
-                noTutors.className = 'no-tutors';
-                noTutors.innerHTML = 'No featured tutors available yet.';
-                tutorsContainer.appendChild(noTutors);
-                return;
-            }
-
-            tutors.forEach(tutor => {
-                const card = document.createElement('div');
-                card.className = 'tutor-card';
-
-                const img = document.createElement('img');
-                img.src = tutor.profilePhoto || 'https://via.placeholder.com/150';
-                img.alt = tutor.fullName;
-
-                const name = document.createElement('h4');
-                name.textContent = tutor.fullName;
-
-                const subject = document.createElement('p');
-                subject.textContent = `Subjects: ${tutor.subjects.join(', ')}`;
-
-                const rating = document.createElement('p');
-                rating.textContent = `Rating: ★★★★☆`; // Placeholder for rating
-
-                const button = document.createElement('button');
-                button.textContent = 'Book a Session';
-                button.onclick = () => {
-                    // Logic to book a session can be added here
-                };
-
-                card.appendChild(img);
-                card.appendChild(name);
-                card.appendChild(subject);
-                card.appendChild(rating);
-                card.appendChild(button);
-
-                tutorsContainer.appendChild(card);
-            });
-        };
-    </script>
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script-supabase.js"></script>
 </body>
 </html>

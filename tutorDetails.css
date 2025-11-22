@@ -51,57 +51,238 @@
 
 .tutor-details-section {
     padding: 120px 0 60px;
-    background-color: var(--bg-light);
+    background: linear-gradient(180deg, rgba(15,23,42,0.6), rgba(15,23,42,0));
     min-height: calc(100vh - 80px);
 }
 
 .tutor-profile {
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
     overflow: hidden;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .tutor-header {
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: radial-gradient(circle at top right, var(--secondary-hover), var(--secondary));
     color: var(--white);
-    padding: 40px 20px;
+    padding: 50px 30px;
     text-align: center;
 }
 
 .tutor-header img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    border: 4px solid var(--white);
+    border: 5px solid rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
     object-fit: cover;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
 }
 
 .tutor-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin: 0;
-    color: var(--white);
+    letter-spacing: -0.02em;
+}
+
+.tutor-header p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .tutor-info {
-    padding: 40px;
+    padding: 40px 50px;
+    display: grid;
+    gap: 18px;
+    font-size: 1rem;
 }
 
 .tutor-info p {
-    margin: 20px 0;
-    font-size: 1.1rem;
-    line-height: 1.8;
+    margin: 0;
+    line-height: 1.6;
     display: flex;
-    align-items: center;
+    gap: 12px;
+    align-items: baseline;
 }
 
 .tutor-info p strong {
     color: var(--primary);
     font-weight: 600;
-    min-width: 120px;
-    margin-right: 16px;
+    min-width: 122px;
+}
+
+.book-session-btn {
+    margin-top: 10px;
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 15px 22px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+}
+
+.book-session-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(15, 23, 42, 0.25);
+}
+
+.tutor-hero {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tutor-photo-wrapper {
+    position: relative;
+}
+
+.tutor-photo-wrapper img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+}
+
+.tutor-rating {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 15px rgba(15, 23, 42, 0.35);
+}
+
+.tutor-headline h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: var(--text-dark);
+}
+
+.tutor-headline p {
+    margin: 8px 0 12px;
+    color: var(--text-light);
+}
+
+.subject-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.subject-badge {
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.subject-badge.muted {
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 23, 42, 0.2);
+    color: var(--text-light);
+}
+
+.tutor-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tutor-info-grid p {
+    background: rgba(244, 247, 255, 0.8);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text-dark);
+}
+
+.tutor-info-grid span {
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.tutor-bio-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.booking-modal-content {
+    background: var(--white);
+    border-radius: 18px;
+    max-width: 420px;
+    width: 90%;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.booking-form label {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.booking-form select,
+.booking-form input,
+.booking-form textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    padding: 12px 14px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.booking-form select:focus,
+.booking-form input:focus,
+.booking-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.booking-form button {
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    background: var(--secondary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.booking-form button:hover {
+    background: var(--secondary-hover);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

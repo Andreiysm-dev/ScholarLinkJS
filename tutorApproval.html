@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages - TutorMatch</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Tutor Approval Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="messages.css">
+    <link rel="stylesheet" href="tutorApproval.css">
 </head>
 <body>
     <header>
@@ -15,36 +14,33 @@
         </div>
         <nav>
             <ul>
-                <li><a href="homePage.html" class="active">Home</a></li>
-                <li><a href="#popularSubjects" class="find-tutor-link">Find a Tutor</a></li>
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="landingPage.html">Landing</a></li>
                 <li><a href="becomeTutor.html">Become a Tutor</a></li>
                 <li><a href="messages.html">Messages</a></li>
-                <li><a href="home">Contact Us</a></li>
             </ul>
         </nav>
         <div class="account">
-            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="profile.html"><i class="fas fa-user"></i></a>
             <button class="settings-btn"><i class="fas fa-cog"></i></button>
             <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
         </div>
     </header>
 
     <main>
-        <section class="messages-section">
+        <section class="approval-section">
             <div class="container">
-                <h2>Messages</h2>
-                <div class="messages-container">
-                    <div class="message-list">
-                    </div>
+                <div class="approval-header">
+                    <h2>Session Requests</h2>
+                    <p>Review incoming session bookings and approve or decline them directly from this dashboard.</p>
+                </div>
+                <div id="approvalList" class="approval-list">
+                    <p class="status-message">Loading requests...</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 ScholarLink. All rights reserved.</p>
-    </footer>
-    <!-- Supabase Integration -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="script-supabase.js"></script>

@@ -94,68 +94,9 @@
         <p>&copy; 2024 ScholarLink. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('tutorApplicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get the current logged-in user
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser || !currentUser.email) {
-                alert('Please log in first');
-                window.location.href = 'landingPage.html';
-                return;
-            }
-
-            const fullName = document.getElementById('tutorFullName').value;
-            const bio = document.getElementById('tutorBio').value;
-            const university = document.getElementById('university').value;
-            const degree = document.getElementById('degree').value;
-            const yearLevel = document.getElementById('yearLevel').value;
-            const subjects = Array.from(document.getElementById('subjects').selectedOptions).map(option => option.value);
-            const profilePhotoPreview = document.getElementById('profilePhotoPreview');
-
-            // Create a new tutor object using the preview image source
-            const newTutor = {
-                fullName,
-                email: currentUser.email,
-                bio,
-                university,
-                degree,
-                yearLevel,
-                subjects,
-                profilePhoto: profilePhotoPreview.src || 'https://via.placeholder.com/150'
-            };
-
-            console.log('Creating new tutor:', newTutor);
-
-            // Save the tutor to local storage
-            const tutors = JSON.parse(localStorage.getItem('tutors') || '[]');
-            tutors.push(newTutor);
-            localStorage.setItem('tutors', JSON.stringify(tutors));
-
-            // Update user photo and status using the shared function
-            updateUserPhoto(profilePhotoPreview.src);
-            
-            // Update isTutor status
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const userIndex = users.findIndex(user => user.email === currentUser.email);
-            if (userIndex !== -1) {
-                users[userIndex].isTutor = true;
-                localStorage.setItem('users', JSON.stringify(users));
-                
-                currentUser.isTutor = true;
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            }
-
-            alert('Application submitted successfully!');
-            window.location.href = 'homePage.html';
-        });
-
-        // Initialize photo handling
-        const profilePhotoInput = document.getElementById('profilePhoto');
-        const profilePhotoPreview = document.getElementById('profilePhotoPreview');
-        handlePhotoUpload(profilePhotoInput, profilePhotoPreview);
-    </script>
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script-supabase.js"></script>
 </body>
-</html> 
+</html>

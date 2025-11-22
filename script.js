@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         
         if (welcomeMessage && currentUser) {
-            welcomeMessage.textContent = `Welcome, ${currentUser.fullName}!`;
+            welcomeMessage.textContent = `Welcome! ${currentUser.fullName}`;
         }
 
 

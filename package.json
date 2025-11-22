@@ -1,0 +1,16 @@
+{
+  "name": "scholar-linked",
+  "version": "1.0.0",
+  "description": "A platform connecting students with tutors",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --entry-file=landingPage.html --port=3000",
+    "dev": "live-server --entry-file=landingPage.html --port=3000 --watch=."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

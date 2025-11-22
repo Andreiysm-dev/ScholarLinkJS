@@ -45,12 +45,16 @@
     <main>
         <section class="tutor-details-section">
             <div class="container">
-                <div class="tutor-profile">
+                <div class="tutor-profile" id="tutorDetailsContainer">
+                    <p class="status-message">Loading tutor profile...</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script-supabase.js"></script>
 </body>
-</html> 
+</html>
